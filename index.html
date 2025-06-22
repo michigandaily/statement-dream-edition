@@ -1,0 +1,83 @@
+{# Template #}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:url" content="{{ url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Michigan Daily" />
+    <meta property="og:title" content="{{ hed }}" />
+    <meta property="og:description" content="{{ dek }}" />
+    <meta property="og:image" content="{{ social_img }}" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@michigandaily" />
+    <meta name="twitter:creator" content="@michigandaily" />
+    <meta name="twitter:image" content="{{ social_img }}">
+
+    <meta name="description" content="{{ dek }}" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+    <link rel="alternate icon" sizes="48x48" href="/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>{{ hed }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="src/css/main.scss"
+      type="text/css"
+      charset="utf-8"
+    />
+    {% if env == "production" %} {% if google_analytics %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics }}"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "{{ google_analytics }}");
+    </script>
+    {% endif %} {% endif %}
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/js/index.tsx"></script>
+  </body>
+</html>
